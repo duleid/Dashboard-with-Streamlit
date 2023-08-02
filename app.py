@@ -90,8 +90,8 @@ fig_product_sales.update_layout(
 )
 
 # SALES BY HOUR [BAR CHART]
-df_selection["Total"] = pd.to_datetime(df_selection["Total"])
-sales_by_hour = df_selection.groupby(by=["hour"]).sum()[["Total"]]
+sales_by_hour = df_selection.groupby(by=["hour"]).sum(numeric_only=True)[["Total"]]
+
 fig_hourly_sales = px.bar(
     sales_by_hour,
     x=sales_by_hour.index,
@@ -121,3 +121,5 @@ hide_st_style = """
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+print(df_selection.dtypes)
