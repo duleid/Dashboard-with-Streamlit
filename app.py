@@ -73,7 +73,7 @@ st.markdown("""---""")
 # sales_by_product_line = (
 #     df_selection.groupby(by=["Product line"]).sum()[["Total"]].sort_values(by="Total")
 # )
-sales_by_product_line = df_selection.groupby(by=["Product line"])["Total"].sum().sort_values(ascending=False) 
+sales_by_product_line = df_selection.groupby(by=["Product line"]).agg({"Total": "sum"}).sort_values(by="Total", ascending=False)
 
 fig_product_sales = px.bar(
     sales_by_product_line,
