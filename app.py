@@ -70,11 +70,10 @@ with right_column:
 st.markdown("""---""")
 
 # SALES BY PRODUCT LINE [BAR CHART]
-# sales_by_product_line = (
-#     df_selection.groupby(by=["Product line"]).sum()[["Total"]].sort_values(by="Total")
-# )
-grouped = df_selection.groupby(by=["Product line"])
-sales_by_product_line = grouped["Total"].sum().sort_values(ascending=False)
+sales_by_product_line = (
+    df_selection.groupby(by=["Product line"]).sum()[["Total"]].sort_values(by="Total")
+)
+
 
 fig_product_sales = px.bar(
     sales_by_product_line,
@@ -91,6 +90,7 @@ fig_product_sales.update_layout(
 )
 
 # SALES BY HOUR [BAR CHART]
+df_selection["Total"] = pd.to_numeric(df_selection["Total"])
 sales_by_hour = df_selection.groupby(by=["hour"]).sum()[["Total"]]
 fig_hourly_sales = px.bar(
     sales_by_hour,
