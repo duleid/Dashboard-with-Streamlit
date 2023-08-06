@@ -1,3 +1,6 @@
+import pip
+pip.main(['install','streamlit_authenticator'])
+
 import pickle 
 from pathlib import Path
 import streamlit_authenticator as stauth
