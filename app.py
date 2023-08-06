@@ -1,5 +1,5 @@
-import pip
-pip.main(['install','streamlit_authenticator'])
+# import pip
+# pip.main(['install','streamlit_authenticator'])
 
 import pickle
 from pathlib import Path
